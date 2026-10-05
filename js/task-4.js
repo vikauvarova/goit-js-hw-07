@@ -8,12 +8,14 @@ const btn = document.querySelector('button');
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    if (!formData.get('email') || !formData.get('password')) {
+    const email = formData.get('email').trim();
+    const password = formData.get('password').trim();
+    if (!email || !password) {
         alert('All form fields must be filled in');
     } else {
         const user = {
-            email: formData.get('email'),
-            password: formData.get('password')
+            email: email,
+            password: password 
         };
         console.log(user);
         form.reset();
